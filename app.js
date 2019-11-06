@@ -29,6 +29,19 @@ function initializeControls() {
 	
 }
 
+//API Consumption Part
+function UserAction() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             console.log(this.responseText);
+         }
+    };
+    xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send("Data to be sent to our API");
+}
+
 // Take a picture when cameraTrigger is tapped
 cameraTrigger.onclick = function() {
 
