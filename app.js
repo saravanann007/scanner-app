@@ -7,32 +7,59 @@ const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
     cameraSensor = document.querySelector("#camera--sensor"),
     cameraTrigger = document.querySelector("#camera--trigger");
+	startButton = document.querySelector("#start-button");
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
+	
     navigator.mediaDevices
         .getUserMedia(constraints)
         .then(function(stream) {
             track = stream.getTracks()[0];
             cameraView.srcObject = stream;
+			cameraOutput.style.visibility="visible";
         })
         .catch(function(error) {
             console.error("Oops. Something is broken.", error);
         });
 }
 
+function initializeControls() {
+	cameraOutput.style.visibility="hidden";
+	
+}
+
+//API Consumption Part
+function UserAction() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             console.log(this.responseText);
+         }
+    };
+    xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send("Data to be sent to our API");
+}
+
 // Take a picture when cameraTrigger is tapped
 cameraTrigger.onclick = function() {
+
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    cameraOutput.src = cameraSensor.toDataURL("image/webp");
-    cameraOutput.classList.add("taken");
-    // track.stop();
+	
+    //cameraOutput.src = cameraSensor.toDataURL("image/webp");
+   // cameraOutput.classList.add("taken");
+    //track.stop();
 };
 
+
+startButton.onclick=function(){
+	cameraStart();
+}
 // Start the video stream when the window loads
-window.addEventListener("load", cameraStart, false);
+window.addEventListener("load", initializeControls, false);
 
 
 // Install ServiceWorker

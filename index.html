@@ -10,6 +10,9 @@
 
 		<!-- Name of the app -->
 		<title>Camera App</title>
+		
+		<link href="bootstrap.min.css" rel="stylesheet">
+        <link href="custom.css" rel="stylesheet">
 
 		<!-- Link to site manifest -->
 		<link rel="manifest" href="site.webmanifest">
@@ -27,10 +30,17 @@
 		<link rel="stylesheet" href="style.css"> 
 	</head>
 	<body>
-
-		
+			<div class="jumbotron feature">
+					<div class="container">
+						<h1><span></span> Beer Program</h1>
+						<p>Making Working Place better</p>
+						<p>
+						<button id="start-button" class="btn btn-default">Start Scanning</button>
+					</p>
+					</div>
+				</div>
 		<!-- Camera -->
-		<main id="camera" style="width: 100px; height:100px">
+		<main id="camera">
 
 		    <!-- Camera sensor -->
 		    <canvas id="camera--sensor"></canvas>
@@ -42,10 +52,8 @@
 		    <img src="//:0" alt="" id="camera--output">
 
 		    <!-- Camera trigger -->
-		    <button id="camera--trigger">Take a picture</button>
-
 		</main>
-	
+		<button id="camera--trigger">Scan BarCode</button>
 
 		<!-- Reference to your JavaScript file -->
 		<script src="app.js"></script>
