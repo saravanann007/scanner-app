@@ -8,6 +8,7 @@ const cameraView = document.querySelector("#camera--view"),
     cameraSensor = document.querySelector("#camera--sensor"),
     cameraTrigger = document.querySelector("#camera--trigger");
 	startButton = document.querySelector("#start-button");
+	spinner = document.querySelector("#spinner");
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
@@ -17,7 +18,8 @@ function cameraStart() {
         .then(function(stream) {
             track = stream.getTracks()[0];
             cameraView.srcObject = stream;
-			cameraOutput.style.visibility="visible";
+			cameraView.style.visibility="visible";
+			cameraTrigger.style.visibility="visible";
         })
         .catch(function(error) {
             console.error("Oops. Something is broken.", error);
@@ -26,6 +28,7 @@ function cameraStart() {
 
 function initializeControls() {
 	cameraOutput.style.visibility="hidden";
+	spinner.style.visibility="hidden"
 	
 }
 
@@ -33,6 +36,7 @@ function initializeControls() {
 function UserAction() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+		spinner.style.visibility="hidden";
          if (this.readyState == 4 && this.status == 200) {
              console.log(this.responseText);
          }
@@ -45,10 +49,10 @@ function UserAction() {
 // Take a picture when cameraTrigger is tapped
 cameraTrigger.onclick = function() {
 
-    cameraSensor.width = cameraView.videoWidth;
-    cameraSensor.height = cameraView.videoHeight;
-    cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-	
+    cameraTrigger.style.visibility="hidden";
+	cameraView.style.visibility="hidden";
+	spinner.style.visibility="visible";
+	setTimeout(5000,UserAction);
     //cameraOutput.src = cameraSensor.toDataURL("image/webp");
    // cameraOutput.classList.add("taken");
     //track.stop();
