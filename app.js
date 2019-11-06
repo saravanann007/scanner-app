@@ -32,7 +32,7 @@ cameraTrigger.onclick = function() {
 };
 
 // Start the video stream when the window loads
-window.addEventListener("load", cameraStart, false);
+//window.addEventListener("load", cameraStart, false);
 
 
 // Install ServiceWorker
