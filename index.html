@@ -27,9 +27,9 @@
 		<link rel="stylesheet" href="style.css"> 
 	</head>
 	<body>
-
+        <button id="start-button">Start Scanning</button>
 		<!-- Camera -->
-		<main id="camera" style="width: 100px; height:100px">
+		<main id="camera">
 
 		    <!-- Camera sensor -->
 		    <canvas id="camera--sensor"></canvas>
@@ -41,9 +41,8 @@
 		    <img src="//:0" alt="" id="camera--output">
 
 		    <!-- Camera trigger -->
-		    <button id="camera--trigger">Scan BarCode</button>
-
 		</main>
+		<button id="camera--trigger">Scan BarCode</button>
 
 		<!-- Reference to your JavaScript file -->
 		<script src="app.js"></script>

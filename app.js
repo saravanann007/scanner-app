@@ -7,33 +7,46 @@ const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
     cameraSensor = document.querySelector("#camera--sensor"),
     cameraTrigger = document.querySelector("#camera--trigger");
+	startButton = document.querySelector("#start-button");
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
+	
     navigator.mediaDevices
         .getUserMedia(constraints)
         .then(function(stream) {
             track = stream.getTracks()[0];
             cameraView.srcObject = stream;
+			cameraOutput.style.visibility="visible";
         })
         .catch(function(error) {
             console.error("Oops. Something is broken.", error);
         });
 }
 
+function initializeControls() {
+	cameraOutput.style.visibility="hidden";
+	
+}
+
 // Take a picture when cameraTrigger is tapped
 cameraTrigger.onclick = function() {
-    cameraStart();
+
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    cameraOutput.src = cameraSensor.toDataURL("image/webp");
-    cameraOutput.classList.add("taken");
-    // track.stop();
+	
+    //cameraOutput.src = cameraSensor.toDataURL("image/webp");
+   // cameraOutput.classList.add("taken");
+    //track.stop();
 };
 
+
+startButton.onclick=function(){
+	cameraStart();
+}
 // Start the video stream when the window loads
-//window.addEventListener("load", cameraStart, false);
+window.addEventListener("load", initializeControls, false);
 
 
 // Install ServiceWorker
