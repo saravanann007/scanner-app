@@ -1,6 +1,7 @@
 // Set constraints for the video stream
 var constraints = { video: { facingMode: "environment" }, audio: false };
 var track = null;
+var toggle=false;
 
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
@@ -36,6 +37,7 @@ function initializeControls() {
 //API Consumption Part
 function UserAction() {
 	 checkmark.style.visibility='visible';
+	if(!toggle){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
 		spinner.style.visibility="hidden";
@@ -52,9 +54,18 @@ function UserAction() {
             '<path class="checkmark__check" fill="none" d="M16 16 36 36 M36 16 16 36" /></svg>';
          }
     };
-    xhttp.open("GET", "http://172.20.10.6:8080/pour", true);
+    xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send("Data to be sent to our API");
+	}
+	else{
+		
+		document.getElementById("checkmark").innerHTML='<svg class="checkmark_cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">'+
+            '<circle class="checkmark__redcircle" cx="26" cy="26" r="25" fill="none" />'+
+            '<path class="checkmark__check" fill="none" d="M16 16 36 36 M36 16 16 36" /></svg>';
+		
+	}
+	toggle=!toggle;
 }
 
 // Take a picture when cameraTrigger is tapped
@@ -66,7 +77,7 @@ cameraTrigger.onclick = function() {
 	setTimeout(UserAction,5000);
     //cameraOutput.src = cameraSensor.toDataURL("image/webp");
    // cameraOutput.classList.add("taken");
-    //track.stop();
+    track.stop();
 };
 
 
