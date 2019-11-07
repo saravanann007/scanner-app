@@ -46,7 +46,7 @@ function UserAction() {
 
          }
     };
-    xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
+    xhttp.open("GET", "http://172.20.10.6:8080/pour", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send("Data to be sent to our API");
 }
