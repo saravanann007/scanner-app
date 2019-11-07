@@ -52,7 +52,7 @@ cameraTrigger.onclick = function() {
     cameraTrigger.style.visibility="hidden";
 	cameraView.style.visibility="hidden";
 	spinner.style.visibility="visible";
-	setTimeout(5000,UserAction);
+	setTimeout(UserAction,5000);
     //cameraOutput.src = cameraSensor.toDataURL("image/webp");
    // cameraOutput.classList.add("taken");
     //track.stop();
