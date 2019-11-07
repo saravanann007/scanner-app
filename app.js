@@ -15,13 +15,13 @@ const cameraView = document.querySelector("#camera--view"),
 // Access the device camera and stream to cameraView
 function cameraStart() {
 	checkmark.style.visibility='Hidden';
+	cameraTrigger.style.visibility="visible";
     navigator.mediaDevices
         .getUserMedia(constraints)
         .then(function(stream) {
             track = stream.getTracks()[0];
             cameraView.srcObject = stream;
 			cameraView.style.visibility="visible";
-			cameraTrigger.style.visibility="visible";
         })
         .catch(function(error) {
             console.error("Oops. Something is broken.", error);
