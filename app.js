@@ -30,13 +30,15 @@ function cameraStart() {
 
 function initializeControls() {
 	cameraOutput.style.visibility="hidden";
-	spinner.style.visibility="hidden"
+	spinner.style.visibility="hidden";
+	document.getElementById("checkmark").innerHTML='';
 	
 }
 
 //API Consumption Part
 function UserAction() {
 	 checkmark.style.visibility='visible';
+	document.getElementById("checkmark").innerHTML='';
 	if(!toggle){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
