@@ -124,6 +124,28 @@ html, body{
     fill: none;
     animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
   }
+
+  .checkmark__redcircle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: red;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+
+  .checkmark_cross {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: red;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px red;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  }
   
   .checkmark {
     width: 56px;
@@ -131,7 +153,7 @@ html, body{
     border-radius: 50%;
     display: block;
     stroke-width: 2;
-    stroke: #fff;
+    stroke: green;
     stroke-miterlimit: 10;
     margin: 10% auto;
     box-shadow: inset 0px 0px 0px #7ac142;
@@ -143,6 +165,13 @@ html, body{
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
     animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  }
+
+  .success {
+    text-align: center;
+    margin: 20px 0 60px;
+    font-size: 1.25em;
+    color: #73AF55;
   }
   
   @keyframes stroke {
@@ -160,6 +189,7 @@ html, body{
   }
   @keyframes fill {
     100% {
-      box-shadow: inset 0px 0px 0px 30px #7ac142;
+      box-shadow: inset 0px 0px 0px 30px white;
     }
   }
+  
