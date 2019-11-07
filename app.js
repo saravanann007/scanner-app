@@ -43,19 +43,20 @@ function UserAction() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
 		spinner.style.visibility="hidden";
-         if (this.readyState == 4 && this.status == 200) {
+	  if (this.readyState == 4) {
+           if (this.status == 200) {
              console.log(this.responseText);
               document.getElementById("checkmark").innerHTML='<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>'+
             '<path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>'+
 		 '<p class="success">Cheers!!</p>';
 	     }
-	    else if (this.status !== 200)
-	    {
+	    else {
              document.getElementById("checkmark").innerHTML='<svg class="checkmark_cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">'+
             '<circle class="checkmark__redcircle" cx="26" cy="26" r="25" fill="none" />'+
             '<path class="checkmark__check" fill="none" d="M16 16 36 36 M36 16 16 36" /></svg>'+
 			'<p class="failure">Error!</p>';
 	    }
+	}
     };
     xhttp.open("GET", "https://172.20.10.6:8443/pour", true);
     xhttp.setRequestHeader("Content-type", "application/json");
