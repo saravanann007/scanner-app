@@ -9,10 +9,11 @@ const cameraView = document.querySelector("#camera--view"),
     cameraTrigger = document.querySelector("#camera--trigger");
 	startButton = document.querySelector("#start-button");
 	spinner = document.querySelector("#spinner");
+       checkmark = document.querySelector("#checkmark");
 
 // Access the device camera and stream to cameraView
 function cameraStart() {
-	
+	checkmark.style.visibility='Hidden';
     navigator.mediaDevices
         .getUserMedia(constraints)
         .then(function(stream) {
